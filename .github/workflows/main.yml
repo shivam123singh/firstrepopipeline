@@ -1,20 +1,32 @@
 name: firstrepoPipe
+
 on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: npm install
 
     - name: Build Docker image
       run: docker build -t my-node-app .
 
-    - name: Push Docker image
-      run: docker push my-node-app
+    - name: Publish Docker image to GitHub Packages
+      run: docker build -t my-node-app .
+      - with:
+          username: ${{ secrets.UNAME }}
+          password: ${{ secrets.PASS }}
 
-    - name: Deploy to server 
-      run: echo "Deploying to server..."
