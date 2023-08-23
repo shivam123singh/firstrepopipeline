@@ -24,7 +24,6 @@ jobs:
     - name: Build Docker image
       run: docker build -t my-node-app .
       
-    - name:
       with:
         username: ${{ secrets.UNAME }}
         password: ${{ secrets.PASS }}
