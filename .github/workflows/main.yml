@@ -26,7 +26,7 @@ jobs:
 
     - name: Publish Docker image to GitHub Packages
       run: docker build -t my-node-app .
-      - with:
-          username: ${{ secrets.UNAME }}
-          password: ${{ secrets.PASS }}
+    - with:
+        username: ${{ secrets.UNAME }}
+        password: ${{ secrets.PASS }}
 
