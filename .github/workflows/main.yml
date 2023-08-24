@@ -3,7 +3,7 @@ name: firstrepoPipe
 on:
   push:
     branches:
-      - main
+      - node.js
 
 jobs:
   build:
@@ -26,6 +26,6 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-name:
+
     - name: Build Docker image
       run: docker build -t my-node-app .
