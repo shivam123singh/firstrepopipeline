@@ -22,7 +22,7 @@ jobs:
       uses: Docker/login-action@v1
       with:
         username: ${{ secrets.YOUR_DOCKER_USERNAME }}
-        password: ${{ secrets.YOUR_DOCKER_PASSWORD }}
+        password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
     - name: Install dependencies
       run: npm install
