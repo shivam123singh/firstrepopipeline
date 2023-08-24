@@ -3,7 +3,7 @@ name: buildAndPushDockerImage
 on:
   push:
     branches:
-      - node.js
+      - main
 
 jobs:
   build_and_push:
