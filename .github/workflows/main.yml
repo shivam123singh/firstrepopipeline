@@ -2,10 +2,7 @@ name: firstrepoPipe
 on:
   push:
     branches:
-      - node.js
-
- 
-
+      - main
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
