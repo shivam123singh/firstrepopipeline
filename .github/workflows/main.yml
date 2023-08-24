@@ -1,4 +1,4 @@
-name: firstrepoPipe
+name: buildAndPushDockerImage
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - node.js
 
 jobs:
-  build:
+  build_and_push:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +21,17 @@ jobs:
     - name: Login to Docker Hub
       uses: Docker/login-action@v1
       with:
-        username: ${{ secrets.UNAME }}
-        password: ${{ secrets.PASS }}
+        username: ${{ secrets.YOUR_DOCKER_USERNAME }}
+        password: ${{ secrets.YOUR_DOCKER_PASSWORD }}
 
     - name: Install dependencies
       run: npm install
 
     - name: Build Docker image
       run: docker build -t my-node-app .
+
+    - name: Tag Docker image
+      run: docker tag my-node-app:latest YOUR_DOCKER_USERNAME/my-node-app:latest
+
+    - name: Push Docker image
+      run: docker push YOUR_DOCKER_USERNAME/my-node-app:latest
